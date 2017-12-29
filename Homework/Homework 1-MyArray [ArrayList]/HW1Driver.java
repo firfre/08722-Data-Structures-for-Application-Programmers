@@ -50,7 +50,7 @@ public class HW1Driver {
         }
 
         // print current number of words
-        System.out.println("Number of words in the file is : " + words.size());
+        System.out.println("Number of words in the file is: " + words.size());
 
         /*
          * print capacity, or the current length, of the array
@@ -71,7 +71,7 @@ public class HW1Driver {
          */
         words.removeDups();
 
-        System.out.println("Number of words w/o duplicates is : " + words.size());
+        System.out.println("Number of words w/o duplicates is: " + words.size());
         System.out.println("Capacity of words array is: " + words.getCapacity());
         words.display();
     }
