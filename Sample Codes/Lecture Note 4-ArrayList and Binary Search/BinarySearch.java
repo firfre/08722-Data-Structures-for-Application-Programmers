@@ -1,6 +1,8 @@
 /**
  * 08-722 Data Structures for Application Programmers.
- * A Binary Search Implementation
+ * Lecture 4-ArrayList and Binary Search
+ *
+ * Binary Search implementation
  *
  * @author Terry Lee
  */

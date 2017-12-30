@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 /**
  * 08-722 Data Structures for Application Programmers.
- * Example code for Lecture 3-Arrays and Linear Search.
+ * Lecture 3-Arrays and Linear Search.
  *
  * @author Terry Lee
  */
