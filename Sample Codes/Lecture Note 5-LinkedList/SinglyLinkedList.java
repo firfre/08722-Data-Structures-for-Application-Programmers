@@ -127,10 +127,6 @@ public class SinglyLinkedList<AnyType> implements Iterable<AnyType> {
         }
     }
 
-    /**
-     * Returns iterator object that allows access to private elements.
-     * @return Iterator object
-     */
     @Override
     public Iterator<AnyType> iterator() {
         return new LinkedListIterator();

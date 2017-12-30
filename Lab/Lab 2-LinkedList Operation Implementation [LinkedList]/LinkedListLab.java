@@ -75,10 +75,6 @@ public class LinkedListLab<AnyType> implements Iterable<AnyType> {
         return back.data;
     }
 
-    /**
-     * Returns a string representation.
-     * @return String representation of the list
-     */
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -88,10 +84,6 @@ public class LinkedListLab<AnyType> implements Iterable<AnyType> {
         return result.toString();
     }
 
-    /**
-     * Iterator implementation.
-     * @return Iterator object to go through elements in the list
-     */
     @Override
     public Iterator<AnyType> iterator() {
         return new LinkedListIterator();
