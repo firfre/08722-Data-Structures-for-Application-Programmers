@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * 08-722 Data Structures for Application Programmers.
- * Homework 1 MyArray
+ * Homework 1-MyArray
  */
 public class HW1Driver {
 

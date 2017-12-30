@@ -1,6 +1,6 @@
 /**
  * 08-722 Data Structures for Application Programmers.
- * Homework 1 MyArray
+ * Homework 1-MyArray
  *
  * Andrew ID: ziangl
  * @author Ziang Lu

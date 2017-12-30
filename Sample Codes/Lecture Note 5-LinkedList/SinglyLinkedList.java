@@ -175,7 +175,7 @@ public class SinglyLinkedList<AnyType> implements Iterable<AnyType> {
      */
     private static class Node<AnyType> {
         /**
-         * data of a node (item).
+         * Data of a node (item).
          */
         private AnyType data;
         /**

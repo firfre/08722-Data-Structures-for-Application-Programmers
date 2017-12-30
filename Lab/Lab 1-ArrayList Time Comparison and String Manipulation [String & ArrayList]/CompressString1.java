@@ -1,6 +1,6 @@
 /**
  * 08-722 Data Structures for Application Programmers.
- * Lab 1 ArrayList time comparison and String manipulation.
+ * Lab 1-ArrayList Time Comparison and String Manipulation
  *
  * Andrew ID: ziangl
  * @author Ziang Lu
@@ -9,7 +9,8 @@ public class CompressString1 {
 
     /**
      * You may change the main method while you are working on.
-     * But, when you submit your code, make sure to have the original code of the Main method.
+     * But, when you submit your code, make sure to have the original code of
+     * the main() method.
      * @param args arguments
      */
     public static void main(String[] args) {
@@ -20,9 +21,9 @@ public class CompressString1 {
     }
 
     /**
-     * method to compress a string using String.
+     * Method to compress a string using String.
      * @param str input string that should have at least two characters
-     * @return Compressed or original string depending on the size of the compressed
+     * @return compressed or original string depending on the size of the compressed
      */
     public static String compress(String str) {
         // initialize compressed string

@@ -3,7 +3,7 @@ import java.util.List;
 
 /**
  * 08-722 Data Structures for Application Programmers.
- * Lab 1 ArrayList time comparison and String manipulation
+ * Lab 1-ArrayList Time Comparison and String Manipulation
  *
  * @author Terry Lee
  */

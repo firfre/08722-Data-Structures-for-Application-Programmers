@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 /**
  * 08-722 Data Structures for Application Programmers.
- * Lecture 3-Arrays and Linear Search.
+ * Lecture 3-Arrays and Linear Search
  *
  * @author Terry Lee
  */
@@ -10,7 +10,6 @@ public class Lecture3Driver {
 
     /**
      * Simple program to test arrays in Java.
-     *
      * @param args arguments
      */
     public static void main(String[] args) {
@@ -62,7 +61,6 @@ public class Lecture3Driver {
 
     /**
      * Deletes char value in an array of char at the specified position.
-     *
      * @param data char array
      * @param position position to remove char value
      * @return a new array of char without the value at the position.
