@@ -111,15 +111,15 @@ public class Josephus {
             list.add(i);
         }
 
-        int eliminateIndex = -1;
+        int eliminateIdx = -1;
         while (list.size() > 1) {
             int actualRotation = rotation % list.size();
             if (actualRotation == 0) {
                 actualRotation = list.size();
             }
-            eliminateIndex = (eliminateIndex + actualRotation) % list.size();
-            list.remove(eliminateIndex);
-            --eliminateIndex;
+            eliminateIdx = (eliminateIdx + actualRotation) % list.size();
+            list.remove(eliminateIdx);
+            --eliminateIdx;
         }
         return list.get(0);
     }
