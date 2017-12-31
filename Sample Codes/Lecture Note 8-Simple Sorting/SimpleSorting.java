@@ -55,7 +55,7 @@ public class SimpleSorting {
      */
     public static void selectionSort(int[] data) {
         for (int out = 0; out < data.length - 1; out++) {
-            // find the smallest value and put in into the left index
+            // find the smallest value and put into the left index
             int minIdx = out;
             for (int in = out + 1; in < data.length; in++) {
                 if (data[in] < data[minIdx]) {
