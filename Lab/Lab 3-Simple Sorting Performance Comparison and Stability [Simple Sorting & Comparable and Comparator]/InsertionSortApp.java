@@ -57,22 +57,28 @@ public class InsertionSortApp {
      * @param key key param value should be either "last" or "zip"
      */
     public static void insertionSort(Employee[] list, String key) {
-        for (int out = 1; out < list.length; ++out) {
-            Employee tmp = list[out];
-            int in = out;
+        for (int curr = 1; curr < list.length; ++curr) {
+            // Temporarily store the current element
+            Employee tmp = list[curr];
+            // Find the divide line in the partially sorted part
+            int smallestGreaterPtr = curr;
             // Use the compare condition accordingly
             if (key.equals("last")) {
-                while ((in > 0) && (list[in - 1].getLastName().compareTo(tmp.getLastName()) > 0)) {
-                    --in;
+                while ((smallestGreaterPtr > 0)
+                        && (list[smallestGreaterPtr - 1].getLastName().compareTo(tmp.getLastName()) > 0)) {
+                    --smallestGreaterPtr;
                 }
             } else if (key.equals("zip")) {
-                while ((in > 0) && (Integer.compare(list[in - 1].getZipCode(), tmp.getZipCode()) > 0)) {
-                    --in;
+                while ((smallestGreaterPtr > 0)
+                        && (Integer.compare(list[smallestGreaterPtr - 1].getZipCode(), tmp.getZipCode()) > 0)) {
+                    --smallestGreaterPtr;
                 }
             }
-            if (in != out) {
-                System.arraycopy(list, in, list, in + 1, out - in);
-                list[in] = tmp;
+            // Move the greater part in the partially sorted part to the right by 1 position
+            if (smallestGreaterPtr != curr) {
+                System.arraycopy(list, smallestGreaterPtr, list, smallestGreaterPtr + 1, curr - smallestGreaterPtr);
+                // Insert the current element
+                list[smallestGreaterPtr] = tmp;
             }
         }
     }

@@ -56,19 +56,21 @@ public class SelectionSortApp {
      * @param key key param value should be either "last" or "zip"
      */
     public static void selectionSort(Employee[] list, String key) {
-        for (int out = 0; out < (list.length - 1); ++out) {
-            int minIdx = out;
-            for (int in = out + 1; in < list.length; ++in) {
+        for (int tgtPos = 0; tgtPos < (list.length - 1); ++tgtPos) {
+            // Find the minimum in the remaining part
+            int minIdx = tgtPos;
+            for (int i = tgtPos + 1; i < list.length; ++i) {
                 // Use the compare condition accordingly
-                if (key.equals("last") && (list[in].getLastName().compareTo(list[minIdx].getLastName()) < 0)) {
-                    minIdx = in;
+                if (key.equals("last") && (list[i].getLastName().compareTo(list[minIdx].getLastName()) < 0)) {
+                    minIdx = i;
                 } else if (key.equals("zip")
-                        && (Integer.compare(list[in].getZipCode(), list[minIdx].getZipCode()) < 0)) {
-                    minIdx = in;
+                        && (Integer.compare(list[i].getZipCode(), list[minIdx].getZipCode()) < 0)) {
+                    minIdx = i;
                 }
             }
-            if (minIdx != out) {
-                swap(list, minIdx, out);
+            // Swap the minimum to the target position as necessary
+            if (minIdx != tgtPos) {
+                swap(list, minIdx, tgtPos);
             }
         }
     }

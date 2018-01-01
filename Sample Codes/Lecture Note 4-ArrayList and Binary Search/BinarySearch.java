@@ -17,7 +17,6 @@ public class BinarySearch {
     public static int binarySearch(int[] data, int key) {
         int lowerBound = 0;
         int upperBound = data.length - 1;
-        int mid;
 
         while (true) {
             // not found
@@ -25,7 +24,7 @@ public class BinarySearch {
                 return -1;
             }
 
-            mid = lowerBound + (upperBound - lowerBound) / 2;
+            int mid = lowerBound + (upperBound - lowerBound) / 2;
             // found
             if (data[mid] == key) {
                 return mid;
