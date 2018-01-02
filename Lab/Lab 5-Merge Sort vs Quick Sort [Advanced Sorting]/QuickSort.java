@@ -120,7 +120,7 @@ public class QuickSort {
         Stopwatch timer = new Stopwatch();
         quickSort(array);
         System.out.println(
-                "Time taken to sort " + SIZE + " elements (Quick Sort) : " + timer.elapsedTime() + " milliseconds");
+                "Time taken to sort " + SIZE + " elements (Quick Sort): " + timer.elapsedTime() + " milliseconds");
 
         // to make sure sorting works.
         // add "-ea" vm argument

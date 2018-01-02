@@ -39,12 +39,12 @@ public class QuickSortImproved {
         int rightPointer = right;
 
         // Get the pivot value
-        int pivot = array[left + (right - left) / 2];
+        int mid = left + (right - left) / 2;
+        int pivot = array[mid];
 
         // inner loops are simpler
-        // NOTE: This implementation is unstable!!!!!
         while (leftPointer <= rightPointer) {
-            while (array[leftPointer] < pivot) {
+            while (leftPointer <= right && array[leftPointer] <= pivot) {
                 leftPointer++;
             }
             while (array[rightPointer] > pivot) {
@@ -55,6 +55,16 @@ public class QuickSortImproved {
                 leftPointer++;
                 rightPointer--;
             }
+        }
+        // Two special cases to handle:
+        if ((leftPointer == (right + 1)) && (rightPointer == right)) { // Meaning that the pivot is the local maximum
+            swap(array, mid, right);
+            quickSort(array, left, right - 1);
+            return;
+        } else if ((leftPointer == left) && (rightPointer == (left - 1))) { // Meaning that the pivot is the local minimum
+            swap(array, mid, left);
+            quickSort(array, left + 1, right);
+            return;
         }
 
         // Recursion
@@ -110,13 +120,13 @@ public class QuickSortImproved {
     public static void main(String[] args) {
         int[] array = new int[SIZE];
 
-        //for (int i = 0; i < SIZE; i++) array[i] = rand.nextInt();
+        for (int i = 0; i < SIZE; i++) array[i] = rand.nextInt();
 
-        for (int i = 0; i < SIZE; i++) array[i] = SIZE - i;
+        //for (int i = 0; i < SIZE; i++) array[i] = SIZE - i;
 
         Stopwatch timer = new Stopwatch();
         quickSort(array);
-        System.out.println("Time taken to sort " + SIZE + " elements (Quick Sort Improved) : " + timer.elapsedTime()
+        System.out.println("Time taken to sort " + SIZE + " elements (Quick Sort Improved): " + timer.elapsedTime()
                 + " milliseconds");
 
         // to make sure sorting works.
