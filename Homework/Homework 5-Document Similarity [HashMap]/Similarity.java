@@ -113,7 +113,7 @@ public class Similarity {
                 String line = scanner.nextLine();
                 processLine(line);
             }
-        } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException e) {
             System.out.println("Cannot find the file.");
         } finally {
             if (scanner != null) {
