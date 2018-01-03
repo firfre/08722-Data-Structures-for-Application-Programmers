@@ -2,7 +2,6 @@ import java.util.Random;
 
 /**
  * 08-722 Data Structures for Application Programmers.
- *
  * Lab 5-Merge Sort vs Quick Sort
  *
  * A simple Merge Sort implementation
