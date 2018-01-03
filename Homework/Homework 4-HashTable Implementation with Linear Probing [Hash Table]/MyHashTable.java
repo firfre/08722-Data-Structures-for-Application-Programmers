@@ -74,7 +74,7 @@ public class MyHashTable implements MyHTInterface {
      * @return whether the given text is a lowercase word
      */
     private boolean isLowerWord(String text) {
-        return (text != null) && (text.matches("[a-z]+"));
+        return (text != null) && (text.matches("^[a-z]+$"));
     }
 
     /**
