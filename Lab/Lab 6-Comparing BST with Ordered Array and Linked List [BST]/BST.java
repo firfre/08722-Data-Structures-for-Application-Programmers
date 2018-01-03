@@ -1,6 +1,6 @@
 /**
  * 08-722 Data Structures for Application Programmers.
- * Lecture 15-Binary Search Tree
+ * Lab 6-Comparing BST with Ordered Array and Linked List
  *
  * A very simple Binary Search Tree implementation
  * No duplicate keys allowed
@@ -50,10 +50,10 @@ public class BST implements BSTInterface {
     }
 
     @Override
-    public void insert(int key, double value) {
+    public void insert(int key) {
         // empty tree
         if (root == null) {
-            root = new Node(key, value);
+            root = new Node(key);
             return;
         }
 
@@ -72,7 +72,7 @@ public class BST implements BSTInterface {
                 curr = curr.right;
                 if (curr == null) {
                     // found a spot
-                    parent.right = new Node(key, value);
+                    parent.right = new Node(key);
                     return;
                 }
             } else {
@@ -80,7 +80,7 @@ public class BST implements BSTInterface {
                 curr = curr.left;
                 if (curr == null) {
                     // found a spot
-                    parent.left = new Node(key, value);
+                    parent.left = new Node(key);
                     return;
                 }
             } // end of if-else to go right or left
@@ -222,10 +222,6 @@ public class BST implements BSTInterface {
          */
         private int key;
         /**
-         * double value mapped to the key.
-         */
-        private double value;
-        /**
          * References to left and right children nodes.
          */
         private Node left, right;
@@ -233,49 +229,12 @@ public class BST implements BSTInterface {
         /**
          * Constructs a new node with key and value.
          * @param k integer key
-         * @param v double value
          */
-        Node(int k, double v) {
+        Node(int k) {
             key = k;
-            value = v;
             left = null;
             right = null;
         }
-
-        @Override
-        public String toString() {
-            StringBuilder sb = new StringBuilder();
-            sb.append("[").append(key).append(", ").append(value).append("]");
-            return sb.toString();
-        }
-    }
-
-    /**
-     * A few simple test cases.
-     * @param args arguments
-     */
-    public static void main(String[] args) {
-        BST theBST = new BST();
-
-        theBST.traverse();
-        System.out.println("Searching for 45: " + theBST.find(45));
-        theBST.delete(45);
-
-        theBST.insert(50, 0.5);
-        theBST.insert(69, 0.4);
-        theBST.insert(45, 1.4);
-        theBST.insert(72, 3.4);
-        theBST.insert(46, 3.3);
-        theBST.insert(46, 3.4);
-
-        theBST.traverse();
-        System.out.println("Searching for 45: " + theBST.find(45));
-        System.out.println("Deleting element of the key 45");
-        theBST.delete(45);
-        System.out.println("Searching for 45: " + theBST.find(45));
-        System.out.println("Deleting element of the key 40");
-        theBST.delete(40);
-        theBST.traverse();
     }
 
 }
