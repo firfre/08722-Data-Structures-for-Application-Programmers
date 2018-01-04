@@ -2,7 +2,7 @@ import java.util.Comparator;
 
 /**
  * 08-722 Data Structures for Application Programmers.
- * Homework 6-Building Index using BST
+ * Homework 6-Building Index Using BST
  *
  * Comparator comparing Word objects by alphabetic order first and then
  * ascending frequencies.

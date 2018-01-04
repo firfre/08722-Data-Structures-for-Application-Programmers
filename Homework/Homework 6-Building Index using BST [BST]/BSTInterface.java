@@ -1,6 +1,6 @@
 /**
  * 08-722 Data Structures for Application Programmers.
- * Homework 6-Building Index using BST
+ * Homework 6-Building Index Using BST
  *
  * A very simple interface: DO NOT MODIFY THIS!
  * @param <T> data type of objects

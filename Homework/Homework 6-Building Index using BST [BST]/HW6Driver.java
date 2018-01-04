@@ -2,7 +2,7 @@ import java.io.IOException;
 
 /**
  * 08-722 Data Structures for Application Programmers.
- * Homework 6-Building Index using BST
+ * Homework 6-Building Index Using BST
  *
  * DO NOT MODIFY THIS CLASS!
  * ALL OF YOUR WORK SHOULD BE DONE IN OTHER CLASSES!

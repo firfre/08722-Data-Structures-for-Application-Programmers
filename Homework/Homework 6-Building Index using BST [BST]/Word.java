@@ -3,7 +3,7 @@ import java.util.Set;
 
 /**
  * 08-722 Data Structures for Application Programmers.
- * Homework 6-Building Index using BST
+ * Homework 6-Building Index Using BST
  *
  * Word class (wrapper class for a word)
  *
