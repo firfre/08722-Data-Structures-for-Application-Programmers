@@ -55,7 +55,8 @@ public class MergeSort {
     }
 
     /**
-     * Instead of creating multiple arrays, this merge works with only two arrays.
+     * Instead of creating multiple arrays, this merge works with only two
+     * arrays.
      * @param from input array
      * @param to auxiliary array to use during merge process
      * @param leftPos starting point of left half

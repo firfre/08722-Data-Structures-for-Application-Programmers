@@ -91,7 +91,8 @@ public class MyHashTable implements MyHTInterface {
      *
      * For example, "cats" : 3*27^3 + 1*27^2 + 20*27^1 + 19*27^0 = 60,337
      *
-     * But, to make the hash process faster, Horner's method should be applied as follows;
+     * But, to make the hash process faster, Horner's method should be applied
+     * as follows;
      *
      * var4*n^4 + var3*n^3 + var2*n^2 + var1*n^1 + var0*n^0 can be rewritten as
      * (((var4*n + var3)*n + var2)*n + var1)*n + var0

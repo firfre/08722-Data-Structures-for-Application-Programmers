@@ -26,26 +26,26 @@ public class FindMedian {
      */
     public void addNumber(int value) {
         if (maxHeap.size() == minHeap.size()) {
-            // First add the number to the max heap
+            // First add the number to the max-heap
             maxHeap.add(value);
             if (minHeap.size() == 0) {
                 return;
             }
         } else {
-            // First add the number to the min heap
+            // First add the number to the min-heap
             minHeap.add(value);
         }
 
-        // In order to maintain that all the numbers in the max heap are smaller than or equal to all the numbers in
-        // the min heap, swap the tops if necessary.
+        // In order to maintain that all the numbers in the max-heap are smaller than or equal to all the numbers in
+        // the min-heap, swap the tops if necessary.
         if (maxHeap.peek() > minHeap.peek()) {
             swapTops();
         }
     }
 
     /**
-     * Private helper method to swap the tops between the max heap and the min
-     * heap.
+     * Private helper method to swap the tops between the max-heap and the
+     * min-heap.
      * Note that the top of the max heap is greater than the top of the min heap.
      */
     private void swapTops() {
@@ -55,7 +55,8 @@ public class FindMedian {
 
     /**
      * Returns the median value of the added values.
-     * If maxHeap and minHeap are of different sizes, then maxHeap must have one extra element.
+     * If maxHeap and minHeap are of different sizes, then maxHeap must have one
+     * extra element.
      * @return median value
      */
     public double getMedian() {
