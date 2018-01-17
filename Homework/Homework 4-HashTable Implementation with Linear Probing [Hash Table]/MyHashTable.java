@@ -230,8 +230,7 @@ public class MyHashTable implements MyHTInterface {
     }
 
     /**
-     * Private helper method to find the next prime starting from the given
-     * number.
+     * Helper method to find the next prime starting from the given number.
      * @param start starting number
      * @return next prime
      */
