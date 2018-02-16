@@ -11,11 +11,56 @@ import java.util.PriorityQueue;
 public class Huffman {
 
     /**
+     * Static nested Node class.
+     */
+    private static class Node {
+        /**
+         * Character stored in this Node.
+         */
+        private Character c;
+        /**
+         * Frequency of the character
+         */
+        private int freq;
+        /**
+         * Reference to left child.
+         */
+        Node left;
+        /**
+         * Reference to right child
+         */
+        Node right;
+
+        /**
+         * Constructor with parameter.
+         * @param c character to store
+         * @param freq frequency of the character
+         */
+        Node(Character c, int freq) {
+            this(c, freq, null, null);
+        }
+
+        /**
+         * Constructor with parameter.
+         * @param c character to store
+         * @param freq frequency of the character
+         * @param left left child
+         * @param right right child
+         */
+        Node(Character c, int freq, Node left, Node right) {
+            this.c = c;
+            this.freq = freq;
+            this.left = left;
+            this.right = right;
+        }
+    }
+
+    /**
      * Root of the Huffman tree.
      */
-    private TreeNode huffmanTreeRoot;
+    private Node huffmanTreeRoot;
     /**
-     * 
+     * Encoding map.
      */
     private HashMap<Character, String> encodingMap;
 
@@ -34,31 +79,31 @@ public class Huffman {
     public void constructHuffmanTree(String s) {
         // Check whether the input string is null or empty
         if ((s == null) || (s.length() == 0)) {
-            huffmanTreeRoot = new TreeNode(null, 0);
+            huffmanTreeRoot = new Node(null, 0);
             return;
         }
 
         // Create a map between characters and their frequencies
         HashMap<Character, Integer> freqOfChars = getFreqOfChars(s);
 
-        // Create a TreeNode heap from the map
-        PriorityQueue<TreeNode> heap = new PriorityQueue<TreeNode>(new Comparator<TreeNode>() {
+        // Create a Node heap from the map
+        PriorityQueue<Node> heap = new PriorityQueue<Node>(new Comparator<Node>() {
             @Override
-            public int compare(TreeNode o1, TreeNode o2) {
+            public int compare(Node o1, Node o2) {
                 return Integer.compare(o1.freq, o2.freq);
             }
         });
         for (Map.Entry<Character, Integer> entry : freqOfChars.entrySet()) {
-            heap.offer(new TreeNode(entry.getKey(), entry.getValue()));
+            heap.offer(new Node(entry.getKey(), entry.getValue()));
         }
 
         // Construct the Huffman tree
         while (heap.size() > 1) {
             // Take out two nodes with minimum frequency from the heap
-            TreeNode minNode1 = heap.poll();
-            TreeNode minNode2 = heap.poll();
+            Node minNode1 = heap.poll();
+            Node minNode2 = heap.poll();
             // Combine the two nodes
-            TreeNode combined = new TreeNode(null, minNode1.freq + minNode2.freq, minNode1, minNode2);
+            Node combined = new Node(null, minNode1.freq + minNode2.freq, minNode1, minNode2);
             // Put the combined node back to the heap
             heap.offer(combined);
         }
@@ -90,7 +135,7 @@ public class Huffman {
      * Private helper method to create the encoding recursively.
      * @param curr current node
      */
-    private void createEncoding(TreeNode curr, StringBuilder s) {
+    private void createEncoding(Node curr, StringBuilder s) {
         // Base case
         if ((curr.left == null) && (curr.right == null)) {
             encodingMap.put(curr.c, s.toString());
@@ -144,7 +189,7 @@ public class Huffman {
      * @param curr current node
      * @param s decoded message
      */
-    private void decodeHelper(String encoded, int idx, TreeNode curr, StringBuilder s) {
+    private void decodeHelper(String encoded, int idx, Node curr, StringBuilder s) {
         // Base case 1: Decoded all the encoded string
         if (idx >= encoded.length()) {
             s.append(curr.c);
@@ -163,51 +208,6 @@ public class Huffman {
             decodeHelper(encoded, idx + 1, curr.left, s);
         } else {
             decodeHelper(encoded, idx + 1, curr.right, s);
-        }
-    }
-
-    /**
-     * Static nested TreeNode class.
-     */
-    private static class TreeNode {
-        /**
-         * Character stored in this TreeNode.
-         */
-        private Character c;
-        /**
-         * Frequency of the character
-         */
-        private int freq;
-        /**
-         * Reference to left child.
-         */
-        TreeNode left;
-        /**
-         * Reference to right child
-         */
-        TreeNode right;
-
-        /**
-         * Constructor with parameter.
-         * @param c character to store
-         * @param freq frequency of the character
-         */
-        TreeNode(Character c, int freq) {
-            this(c, freq, null, null);
-        }
-
-        /**
-         * Constructor with parameter.
-         * @param c character to store
-         * @param freq frequency of the character
-         * @param left left child
-         * @param right right child
-         */
-        TreeNode(Character c, int freq, TreeNode left, TreeNode right) {
-            this.c = c;
-            this.freq = freq;
-            this.left = left;
-            this.right = right;
         }
     }
 
