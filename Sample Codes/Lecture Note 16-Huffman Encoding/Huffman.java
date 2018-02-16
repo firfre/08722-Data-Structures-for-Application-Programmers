@@ -1,4 +1,6 @@
-import java.util.Comparator;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -13,13 +15,13 @@ public class Huffman {
     /**
      * Static nested Node class.
      */
-    private static class Node {
+    private static class Node implements Comparable<Node> {
         /**
          * Character stored in this Node.
          */
         private Character c;
         /**
-         * Frequency of the character
+         * Frequency of the character.
          */
         private int freq;
         /**
@@ -27,7 +29,7 @@ public class Huffman {
          */
         Node left;
         /**
-         * Reference to right child
+         * Reference to right child.
          */
         Node right;
 
@@ -53,6 +55,11 @@ public class Huffman {
             this.left = left;
             this.right = right;
         }
+
+        @Override
+        public int compareTo(Node o) {
+            return Integer.compare(freq, o.freq);
+        }
     }
 
     /**
@@ -69,35 +76,31 @@ public class Huffman {
      * @param s string to build the Huffman tree
      */
     public Huffman(String s) {
-        constructHuffmanTree(s);
+//        constructHuffmanTreeWithHeap(s);
+        constructHuffmanTreeWithTwoQueues(s);
     }
 
     /**
-     * Constructs the Huffman tree using the given string.
+     * Constructs the Huffman tree using the given string with a heap.
      * @param s string to build the Huffman tree
      */
-    public void constructHuffmanTree(String s) {
+    public void constructHuffmanTreeWithHeap(String s) {
         // Check whether the input string is null or empty
         if ((s == null) || (s.length() == 0)) {
             huffmanTreeRoot = new Node(null, 0);
             return;
         }
 
-        // Create a map between characters and their frequencies
+        // Create a map between characters and their frequencies   [O(n)]
         HashMap<Character, Integer> freqOfChars = getFreqOfChars(s);
 
-        // Create a Node heap from the map
-        PriorityQueue<Node> heap = new PriorityQueue<Node>(new Comparator<Node>() {
-            @Override
-            public int compare(Node o1, Node o2) {
-                return Integer.compare(o1.freq, o2.freq);
-            }
-        });
+        // Create a Node heap from the map   [O(nlog n)]
+        PriorityQueue<Node> heap = new PriorityQueue<Node>();
         for (Map.Entry<Character, Integer> entry : freqOfChars.entrySet()) {
             heap.offer(new Node(entry.getKey(), entry.getValue()));
         }
 
-        // Construct the Huffman tree
+        // Construct the Huffman tree using a heap   [O(nlog n)]
         while (heap.size() > 1) {
             // Take out two nodes with minimum frequency from the heap
             Node minNode1 = heap.poll();
@@ -107,12 +110,13 @@ public class Huffman {
             // Put the combined node back to the heap
             heap.offer(combined);
         }
-        // By now there is only one node in the heap, which is exactly the root of the Huffman tree
+        // By now there is only one node in the heap, which is exactly the root of the Huffman tree.
         huffmanTreeRoot = heap.poll();
 
-        // Create the encoding
+        // Create the encoding   [O(n)]
         encodingMap = new HashMap<Character, String>();
         createEncoding(huffmanTreeRoot, new StringBuilder());
+        // Overall running time complexity: O(nlog n)
     }
 
     /**
@@ -129,23 +133,94 @@ public class Huffman {
             freqOfChars.put(c, freq);
         }
         return freqOfChars;
+        // Running time complexity: O(n)
     }
 
     /**
      * Private helper method to create the encoding recursively.
      * @param curr current node
+     * @param encodingSoFar encoding so far
      */
-    private void createEncoding(Node curr, StringBuilder s) {
+    private void createEncoding(Node curr, StringBuilder encodingSoFar) {
         // Base case
         if ((curr.left == null) && (curr.right == null)) {
-            encodingMap.put(curr.c, s.toString());
+            encodingMap.put(curr.c, encodingSoFar.toString());
             return;
         }
         // Recursive case
-        createEncoding(curr.left, s.append('0'));
-        s.deleteCharAt(s.length() - 1); // Remember to remove the appended character back
-        createEncoding(curr.right, s.append('1'));
-        s.deleteCharAt(s.length() - 1); // Remember to remove the appended character back
+        createEncoding(curr.left, encodingSoFar.append('0'));
+        encodingSoFar.deleteCharAt(encodingSoFar.length() - 1); // Remember to remove the appended character back
+        createEncoding(curr.right, encodingSoFar.append('1'));
+        encodingSoFar.deleteCharAt(encodingSoFar.length() - 1); // Remember to remove the appended character back
+        // T(n) = 2T(n/2) + O(1)
+        // a = 2, b = 2, d = 0
+        // According to Master Method, the running time complexity is O(n).
+    }
+
+    /**
+     * Constructs the Huffman tree using the given string with two queues.
+     * @param s string to build the Huffman tree
+     */
+    public void constructHuffmanTreeWithTwoQueues(String s) {
+        // Check whether the input string is null or empty
+        if ((s == null) || (s.length() == 0)) {
+            huffmanTreeRoot = new Node(null, 0);
+            return;
+        }
+
+        // Create a map between characters and their frequencies
+        HashMap<Character, Integer> freqOfChars = getFreqOfChars(s);
+
+        // Create a Node array and sort it   [O(nlog n)]
+        ArrayList<Node> nodes = new ArrayList<Node>();
+        for (Map.Entry<Character, Integer> entry : freqOfChars.entrySet()) {
+            nodes.add(new Node(entry.getKey(), entry.getValue(), null, null));
+        }
+        Collections.sort(nodes);
+
+        // Construct the Huffman tree using two queues   [O(n)]
+        // "primitives" contains the nodes with the original character keys, while "merged" contains the merged nodes.
+        // According to the implementation, both of the queues are kept sorted.
+        ArrayDeque<Node> primitives = new ArrayDeque<Node>(nodes), merged = new ArrayDeque<Node>();
+        while ((primitives.size() != 0) || (merged.size() != 1)) {
+            // Take out two nodes with minimum frequency from the two queues
+            Node minNode1 = getMinFreqNode(primitives, merged);
+            Node minNode2 = getMinFreqNode(primitives, merged);
+            // Combine the two nodes
+            Node combined = new Node(null, minNode1.freq + minNode2.freq, minNode1, minNode2);
+            // Put the combined node to the merged queue
+            merged.offer(combined);
+        }
+        // By now there is only one node in the merged queue, which is exactly the root of the Huffman tree.
+        huffmanTreeRoot = merged.pop();
+
+        // Create the encoding [O(n)]
+        encodingMap = new HashMap<Character, String>();
+        createEncoding(huffmanTreeRoot, new StringBuilder());
+        // Overall running time complexity: O(nlog n)
+    }
+
+    /**
+     * Private helper method to get a node with minimum frequency from the given
+     * two queues.
+     * @param primitives queue of primitive nodes
+     * @param merged queue of merged nodes
+     * @return node with minimum frequency
+     */
+    private Node getMinFreqNode(ArrayDeque<Node> primitives, ArrayDeque<Node> merged) {
+        if (primitives.size() == 0) {
+            return merged.poll();
+        } else if (merged.size() == 0) {
+            return primitives.poll();
+        }
+
+        Node primitivesFront = primitives.peek();
+        Node mergedFront = merged.peek();
+        if (primitivesFront.compareTo(mergedFront) <= 0) {
+            return primitives.pop();
+        } else {
+            return merged.pop();
+        }
     }
 
     /**
@@ -209,16 +284,6 @@ public class Huffman {
         } else {
             decodeHelper(encoded, idx + 1, curr.right, s);
         }
-    }
-
-    /**
-     * Main driver.
-     * @param args arguments from command line
-     */
-    public static void main(String[] args) {
-        Huffman huffman = new Huffman("This is a test.\nThis is just a test.");
-        System.out.println(huffman.encode("eat"));
-        System.out.println(huffman.decode("10100100110"));
     }
 
 }
