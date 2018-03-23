@@ -31,7 +31,7 @@ public class Josephus {
             throw new RuntimeException("The input rotation must be greater than 0.");
         }
 
-        Queue<Integer> queue = new ArrayDeque<Integer>();
+        Queue<Integer> queue = new ArrayDeque<>();
         for (int i = 1; i <= size; ++i) {
             queue.offer(i);
         }
@@ -65,7 +65,7 @@ public class Josephus {
             throw new RuntimeException("The input rotation must be greater than 0.");
         }
 
-        Queue<Integer> queue = new LinkedList<Integer>();
+        Queue<Integer> queue = new LinkedList<>();
         for (int i = 1; i <= size; ++i) {
             queue.offer(i);
         }
@@ -106,7 +106,7 @@ public class Josephus {
             throw new RuntimeException("The input rotation must be greater than 0.");
         }
 
-        List<Integer> list = new LinkedList<Integer>();
+        List<Integer> list = new LinkedList<>();
         for (int i = 1; i <= size; ++i) {
             list.add(i);
         }

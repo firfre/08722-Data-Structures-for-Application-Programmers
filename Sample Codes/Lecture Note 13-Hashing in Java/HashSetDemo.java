@@ -16,7 +16,7 @@ public class HashSetDemo {
      * @param args arguments
      */
     public static void main(String[] args) {
-        Set<String> distinctWords = new HashSet<String>();
+        Set<String> distinctWords = new HashSet<>();
         String[] words = "coming together is a beginning keeping together is progress working together is success"
                 .split(" ");
 

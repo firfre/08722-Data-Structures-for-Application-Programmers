@@ -13,11 +13,11 @@ public class FindMedian {
     /**
      * Max heap data structure using PQ.
      */
-    private PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>(20, Collections.reverseOrder());
+    private PriorityQueue<Integer> maxHeap = new PriorityQueue<>(20, Collections.reverseOrder());
     /**
      * Min heap data structure using PQ.
      */
-    private PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>(20);
+    private PriorityQueue<Integer> minHeap = new PriorityQueue<>(20);
 
     /**
      * Adds int values into two heaps.

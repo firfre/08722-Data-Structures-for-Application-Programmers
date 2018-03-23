@@ -26,7 +26,7 @@ public class Lecture9Driver {
         System.out.println();
         System.out.println("**************");
 
-        List<Card> cards = new ArrayList<Card>(5);
+        List<Card> cards = new ArrayList<>(5);
         cards.add(new Card("hearts", 2));
         cards.add(new Card("diamonds", 2));
         cards.add(new Card("spades", 3));

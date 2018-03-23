@@ -156,7 +156,7 @@ public class BST<T extends Comparable<T>> implements Iterable<T>, BSTInterface<T
         }
 
         if (root == null) {
-            root = new Node<T>(toInsert);
+            root = new Node<>(toInsert);
             return;
         }
 
@@ -174,9 +174,9 @@ public class BST<T extends Comparable<T>> implements Iterable<T>, BSTInterface<T
         // Base case 1: Not found
         if (curr == null) {
             if (isLC) {
-                parent.left = new Node<T>(toInsert);
+                parent.left = new Node<>(toInsert);
             } else {
-                parent.right = new Node<T>(toInsert);
+                parent.right = new Node<>(toInsert);
             }
             return;
         }
@@ -214,7 +214,7 @@ public class BST<T extends Comparable<T>> implements Iterable<T>, BSTInterface<T
          * Default constructor.
          */
         BSTIterator() {
-            stack = new Stack<Node<T>>();
+            stack = new Stack<>();
             Node<T> curr = root;
             while (curr != null) {
                 stack.push(curr);

@@ -40,14 +40,14 @@ public class Similarity {
     public Similarity(String string) {
         // Check whether the input string is null or empty
         if ((string == null) || (string.length() == 0)) {
-            freqOfWords = new HashMap<String, BigInteger>();
+            freqOfWords = new HashMap<>();
             nWord = BigInteger.ZERO;
             nLine = 0;
             euclidean = 0.0;
             return;
         }
 
-        freqOfWords = new HashMap<String, BigInteger>();
+        freqOfWords = new HashMap<>();
         nWord = BigInteger.ZERO;
         nLine = 0;
 
@@ -95,14 +95,14 @@ public class Similarity {
     public Similarity(File file) {
         // Check whether the input file is null
         if (file == null) {
-            freqOfWords = new HashMap<String, BigInteger>();
+            freqOfWords = new HashMap<>();
             nWord = BigInteger.ZERO;
             nLine = 0;
             euclidean = 0.0;
             return;
         }
 
-        freqOfWords = new HashMap<String, BigInteger>();
+        freqOfWords = new HashMap<>();
         nWord = BigInteger.ZERO;
         nLine = 0;
 

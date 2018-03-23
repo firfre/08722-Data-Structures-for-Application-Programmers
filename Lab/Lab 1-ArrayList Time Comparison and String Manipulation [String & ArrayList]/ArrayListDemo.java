@@ -15,7 +15,7 @@ public class ArrayListDemo {
      */
     public static void main(String[] args) {
         int size = 100000;
-        List<Integer> numbers = new ArrayList<Integer>();
+        List<Integer> numbers = new ArrayList<>();
 
         // running time of adding values to the end
         Stopwatch timer1 = new Stopwatch();

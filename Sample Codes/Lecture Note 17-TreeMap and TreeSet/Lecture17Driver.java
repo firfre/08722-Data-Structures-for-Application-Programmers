@@ -20,7 +20,7 @@ public class Lecture17Driver {
      * @param args arguments
      */
     public static void main(String[] args) {
-        Map<String, Integer> freqOfWords = new HashMap<String, Integer>();
+        Map<String, Integer> freqOfWords = new HashMap<>();
         String[] words = "coming together is a beginning keeping together is progress working together is success"
                 .split(" ");
 
@@ -37,7 +37,7 @@ public class Lecture17Driver {
         System.out.println("Elements in HashMap: " + freqOfWords);
 
         // print freqOfWords in ascending order
-        TreeMap<String, Integer> sortedWords = new TreeMap<String, Integer>(freqOfWords);
+        TreeMap<String, Integer> sortedWords = new TreeMap<>(freqOfWords);
         System.out.println("Sorted with TreeMap: " + sortedWords);
 
         // print in descending order
@@ -46,7 +46,7 @@ public class Lecture17Driver {
         // print in descending order (keys only)
         System.out.println("Sorted with TreeMap (keys) in descending order: " + sortedWords.descendingKeySet());
 
-        Set<String> distinctWords = new HashSet<String>();
+        Set<String> distinctWords = new HashSet<>();
         for (String word : words) {
             distinctWords.add(word);
         }
@@ -55,7 +55,7 @@ public class Lecture17Driver {
         System.out.println("And, they are: " + distinctWords);
 
         // print distinctWords in ascending order
-        TreeSet<String> sortedDistinctWords = new TreeSet<String>(distinctWords);
+        TreeSet<String> sortedDistinctWords = new TreeSet<>(distinctWords);
         System.out.println("Sorted with TreeSet: " + sortedDistinctWords);
     }
 

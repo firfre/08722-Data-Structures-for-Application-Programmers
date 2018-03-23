@@ -82,7 +82,7 @@ public class ArrayStack<AnyType> implements StackInterface<AnyType> {
      * @param args arguments
      */
     public static void main(String[] args) {
-        ArrayStack<Integer> stack = new ArrayStack<Integer>(6);
+        ArrayStack<Integer> stack = new ArrayStack<>(6);
         stack.push(1);
         stack.push(3);
         System.out.println(stack.pop()); // 3

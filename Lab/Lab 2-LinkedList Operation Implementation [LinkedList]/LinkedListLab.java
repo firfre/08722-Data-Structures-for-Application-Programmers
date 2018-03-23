@@ -30,14 +30,14 @@ public class LinkedListLab<AnyType> implements Iterable<AnyType> {
      */
     public void insert(AnyType item) {
         if (head == null) {
-            head = new Node<AnyType>(item, head);
+            head = new Node<>(item, head);
             return;
         }
         Node<AnyType> tmp = head;
         while (tmp.next != null) {
             tmp = tmp.next;
         }
-        tmp.next = new Node<AnyType>(item, null);
+        tmp.next = new Node<>(item, null);
     }
 
     /**
@@ -151,7 +151,7 @@ public class LinkedListLab<AnyType> implements Iterable<AnyType> {
      * @param args arguments
      */
     public static void main(String[] args) {
-        LinkedListLab<String> theList = new LinkedListLab<String>();
+        LinkedListLab<String> theList = new LinkedListLab<>();
         theList.insert("data");
         theList.insert("strutures");
         theList.insert("rock");

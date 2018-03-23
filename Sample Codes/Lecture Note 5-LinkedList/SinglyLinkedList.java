@@ -30,7 +30,7 @@ public class SinglyLinkedList<AnyType> implements Iterable<AnyType> {
      * @param item item to add
      */
     public void addFirst(AnyType item) {
-        head = new Node<AnyType>(item, head);
+        head = new Node<>(item, head);
     }
 
     /**
@@ -49,7 +49,7 @@ public class SinglyLinkedList<AnyType> implements Iterable<AnyType> {
             tmp = tmp.next;
         }
 
-        tmp.next = new Node<AnyType>(item, null);
+        tmp.next = new Node<>(item, null);
     }
 
     /**
@@ -66,7 +66,7 @@ public class SinglyLinkedList<AnyType> implements Iterable<AnyType> {
 
         // if the key is found
         if (tmp != null) {
-            tmp.next = new Node<AnyType>(item, tmp.next);
+            tmp.next = new Node<>(item, tmp.next);
         }
     }
 
@@ -95,7 +95,7 @@ public class SinglyLinkedList<AnyType> implements Iterable<AnyType> {
 
         // if the key is found
         if (curr != null) {
-            prev.next = new Node<AnyType>(item, curr);
+            prev.next = new Node<>(item, curr);
         }
     }
 

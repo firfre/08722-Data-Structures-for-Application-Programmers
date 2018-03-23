@@ -8,6 +8,7 @@
  * @author Terry Lee
  */
 public class Card implements Comparable<Card> {
+
     /**
      * Suit field.
      */

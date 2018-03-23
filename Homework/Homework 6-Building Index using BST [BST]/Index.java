@@ -32,7 +32,7 @@ public class Index {
      * @return built index tree
      */
     public BST<Word> buildIndex(String fileName, Comparator<Word> comparator) {
-        BST<Word> bst = new BST<Word>();
+        BST<Word> bst = new BST<>();
 
         Scanner scanner = null;
         try {
@@ -85,7 +85,7 @@ public class Index {
             return new BST<Word>();
         }
 
-        BST<Word> bst = new BST<Word>(comparator);
+        BST<Word> bst = new BST<>(comparator);
 
         for (Word wordObj : list) {
             bst.insert(wordObj);
@@ -110,7 +110,7 @@ public class Index {
          * the spirit of using what you wrote, use AlphaFreq comparator in this
          * method.
          */
-        ArrayList<Word> wordList = new ArrayList<Word>();
+        ArrayList<Word> wordList = new ArrayList<>();
 
         Iterator<Word> it = tree.iterator();
         while (it.hasNext()) {
@@ -132,7 +132,7 @@ public class Index {
             return new ArrayList<Word>();
         }
 
-        ArrayList<Word> wordList = new ArrayList<Word>();
+        ArrayList<Word> wordList = new ArrayList<>();
 
         Iterator<Word> it = tree.iterator();
         while (it.hasNext()) {
@@ -156,7 +156,7 @@ public class Index {
 
         ArrayList<Word> sortedByFreq = sortByFrequency(tree);
         int highestFreq = sortedByFreq.get(0).getFrequency();
-        ArrayList<Word> highestFreqWords = new ArrayList<Word>();
+        ArrayList<Word> highestFreqWords = new ArrayList<>();
         for (Word wordObj : sortedByFreq) {
             if (wordObj.getFrequency() == highestFreq) {
                 highestFreqWords.add(wordObj);

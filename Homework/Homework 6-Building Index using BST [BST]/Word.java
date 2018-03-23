@@ -31,7 +31,7 @@ public class Word implements Comparable<Word> {
      */
     public Word(String w) {
         word = w;
-        index = new HashSet<Integer>();
+        index = new HashSet<>();
         frequency = 1;
     }
 

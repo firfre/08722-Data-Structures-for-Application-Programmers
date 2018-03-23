@@ -92,7 +92,7 @@ public class ArrayQueue<AnyType> implements QueueInterface<AnyType> {
      * @param args arguments
      */
     public static void main(String[] args) {
-        ArrayQueue<Integer> queue = new ArrayQueue<Integer>();
+        ArrayQueue<Integer> queue = new ArrayQueue<>();
         queue.enqueue(1);
         queue.enqueue(3);
         System.out.println(queue.dequeue()); // 1

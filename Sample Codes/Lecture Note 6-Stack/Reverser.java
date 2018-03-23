@@ -26,7 +26,7 @@ public class Reverser {
      * @return reversed string
      */
     public String doReverse() {
-        ArrayStack<Character> theStack = new ArrayStack<Character>(input.length());
+        ArrayStack<Character> theStack = new ArrayStack<>(input.length());
         for (int i = 0; i < input.length(); i++) {
             theStack.push(input.charAt(i));
         }

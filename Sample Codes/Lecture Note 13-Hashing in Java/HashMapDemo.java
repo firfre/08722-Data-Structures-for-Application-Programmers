@@ -19,7 +19,7 @@ public class HashMapDemo {
     public static void main(String[] args) {
         // try to the initial capacity of HashMap to be 10 and load factor to be 0.65
         // But, initial capacity will be set to 16 by its design.
-        Map<String, Integer> freqOfWords = new HashMap<String, Integer>(10, 0.65f);
+        Map<String, Integer> freqOfWords = new HashMap<>(10, 0.65f);
 
         String[] words = "coming together is a beginning keeping together is progress working together is success"
                 .split(" ");

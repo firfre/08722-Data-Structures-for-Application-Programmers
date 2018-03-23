@@ -17,7 +17,7 @@ public class BusSchedueApp {
      * @param args arguments
      */
     public static void main(String[] args) {
-        TreeSet<Integer> schedule = new TreeSet<Integer>();
+        TreeSet<Integer> schedule = new TreeSet<>();
         schedule.add(1223);
         schedule.add(1430);
         schedule.add(1545);
