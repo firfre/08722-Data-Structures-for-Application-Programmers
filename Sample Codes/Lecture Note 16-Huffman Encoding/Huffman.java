@@ -2,8 +2,10 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * Huffman encoding implementation.
@@ -172,7 +174,7 @@ public class Huffman {
         HashMap<Character, Integer> freqOfChars = getFreqOfChars(s);
 
         // Create a Node array and sort it   [O(nlog n)]
-        ArrayList<Node> nodes = new ArrayList<>();
+        List<Node> nodes = new ArrayList<>();
         for (Map.Entry<Character, Integer> entry : freqOfChars.entrySet()) {
             nodes.add(new Node(entry.getKey(), entry.getValue(), null, null));
         }
@@ -181,7 +183,7 @@ public class Huffman {
         // Construct the Huffman tree using two queues   [O(n)]
         // "primitives" contains the nodes with the original character keys, while "merged" contains the merged nodes.
         // According to the implementation, both of the queues are kept sorted.
-        ArrayDeque<Node> primitives = new ArrayDeque<>(nodes), merged = new ArrayDeque<>();
+        Queue<Node> primitives = new ArrayDeque<>(nodes), merged = new ArrayDeque<>();
         while ((primitives.size() != 0) || (merged.size() != 1)) {
             // Take out two nodes with minimum frequency from the two queues
             Node minNode1 = getMinFreqNode(primitives, merged);
@@ -192,7 +194,7 @@ public class Huffman {
             merged.offer(combined);
         }
         // By now there is only one node in the merged queue, which is exactly the root of the Huffman tree.
-        huffmanTreeRoot = merged.pop();
+        huffmanTreeRoot = merged.poll();
 
         // Create the encoding [O(n)]
         encodingMap = new HashMap<>();
@@ -207,7 +209,7 @@ public class Huffman {
      * @param merged queue of merged nodes
      * @return node with minimum frequency
      */
-    private Node getMinFreqNode(ArrayDeque<Node> primitives, ArrayDeque<Node> merged) {
+    private Node getMinFreqNode(Queue<Node> primitives, Queue<Node> merged) {
         if (primitives.size() == 0) {
             return merged.poll();
         } else if (merged.size() == 0) {
@@ -217,9 +219,9 @@ public class Huffman {
         Node primitivesFront = primitives.peek();
         Node mergedFront = merged.peek();
         if (primitivesFront.compareTo(mergedFront) <= 0) {
-            return primitives.pop();
+            return primitives.poll();
         } else {
-            return merged.pop();
+            return merged.poll();
         }
     }
 

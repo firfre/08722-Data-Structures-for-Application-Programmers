@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 08-722 Data Structures for Application Programmers.
@@ -132,7 +133,7 @@ public class BSTComparison {
     public static void main(String[] args) {
         // create an ordered array and linked list with the same values.
         int[] array = new int[SIZE];
-        LinkedList<Integer> llist = new LinkedList<>();
+        List<Integer> llist = new LinkedList<>();
         for (int i = 0; i < array.length; i++) {
             array[i] = i;
             llist.add(i);
